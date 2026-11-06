@@ -10,6 +10,7 @@ export function Shopping() {
   const [suggestions, setSuggestions] = useState<string[]>([]);
   const [error, setError] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
+  const [showSuggestions, setShowSuggestions] = useState(false);
   const [reload, setReload] = useState(0);
 
   useEffect(() => onReturn(() => setReload((n) => n + 1)), []);
@@ -54,11 +55,14 @@ export function Shopping() {
 
   const add = async (label: string) => {
     if (!label.trim()) return;
-    if (await send("/api/shopping", { method: "POST", body: JSON.stringify({ label }) })) setDraft("");
+    if (await send("/api/shopping", { method: "POST", body: JSON.stringify({ label }) })) {
+      setDraft("");
+      setShowSuggestions(false);
+    }
   };
 
   const query = mealKey(draft);
-  const matches = query
+  const matches = showSuggestions
     ? suggestions.filter((s) => mealKey(s).includes(query) && mealKey(s) !== query)
     : [];
   const hasChecked = items?.some((i) => i.checked) ?? false;
@@ -83,6 +87,14 @@ export function Shopping() {
           className="min-w-0 flex-1 rounded-lg border border-foreground/30 bg-background px-3 py-2"
         />
         <button type="submit" className={button}>Ajouter</button>
+        <button
+          type="button"
+          className={button}
+          aria-pressed={showSuggestions}
+          onClick={() => setShowSuggestions((v) => !v)}
+        >
+          Anciens articles
+        </button>
         {matches.length > 0 && (
           <ul aria-label="Suggestions" className="w-full rounded-lg border border-foreground/15">
             {matches.map((label) => (

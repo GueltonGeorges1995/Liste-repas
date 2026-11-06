@@ -4,10 +4,10 @@
 
 **Blocked by:** 05
 
-**Status:** ready-for-agent
+**Status:** done
 
-- [ ] Taper dans le champ n'affiche aucune suggestion
-- [ ] « Anciens articles » affiche l'historique, filtré pendant la saisie, et le masque au second appui
-- [ ] Champ vide : tout l'historique est affiché
-- [ ] Choisir une suggestion ajoute l'Article ; après tout ajout réussi, les suggestions sont masquées
-- [ ] Aucun changement d'API (tests existants verts)
+- [x] Taper dans le champ n'affiche aucune suggestion
+- [x] « Anciens articles » affiche l'historique, filtré pendant la saisie, et le masque au second appui
+- [x] Champ vide : tout l'historique est affiché
+- [x] Choisir une suggestion ajoute l'Article ; après tout ajout réussi, les suggestions sont masquées
+- [x] Aucun changement d'API (tests existants verts)
