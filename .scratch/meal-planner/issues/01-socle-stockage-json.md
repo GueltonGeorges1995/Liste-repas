@@ -6,11 +6,11 @@
 
 **Status:** ready-for-agent
 
-- [ ] Lire le guide Next.js dans `node_modules/next/dist/docs/` avant de coder (voir `AGENTS.md`)
-- [ ] Le fichier de données est ignoré par git
-- [ ] Fichier absent = données vides, sans erreur
-- [ ] L'écriture est atomique : un plantage ne laisse pas de fichier tronqué
-- [ ] Le chemin du fichier est configurable, et les tests utilisent un fichier temporaire
-- [ ] Un test d'un handler de l'API passe (`npm test`)
+- [x] Lire le guide Next.js dans `node_modules/next/dist/docs/` avant de coder (voir `AGENTS.md`)
+- [x] Le fichier de données est ignoré par git
+- [x] Fichier absent = données vides, sans erreur
+- [x] L'écriture est atomique : un plantage ne laisse pas de fichier tronqué
+- [x] Le chemin du fichier est configurable, et les tests utilisent un fichier temporaire
+- [x] Un test d'un handler de l'API passe (`npm test`)
 - [ ] `npm run dev:lan` affiche l'URL du PC sur le réseau local et l'app s'ouvre depuis le téléphone
 - [ ] Interface en français avec navigation Planning / Courses, lisible sur mobile
