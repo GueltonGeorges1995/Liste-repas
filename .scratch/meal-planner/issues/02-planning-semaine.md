@@ -9,7 +9,7 @@
 - [ ] La Semaine courante s'ouvre par défaut, du lundi au dimanche, 14 Créneaux
 - [ ] Navigation vers les Semaines passées et futures, et retour à la Semaine courante
 - [ ] Poser, modifier et vider le Repas d'un Créneau
-- [ ] Un Créneau ne peut jamais contenir plus d'un Repas (testé via l'API)
-- [ ] Une Semaine absente du fichier se lit comme vide (testé via l'API)
-- [ ] Les données persistent dans le fichier JSON après rechargement
-- [ ] Tests de l'API passent
+- [x] Un Créneau ne peut jamais contenir plus d'un Repas (testé via l'API)
+- [x] Une Semaine absente du fichier se lit comme vide (testé via l'API)
+- [x] Les données persistent dans le fichier JSON après rechargement
+- [x] Tests de l'API passent

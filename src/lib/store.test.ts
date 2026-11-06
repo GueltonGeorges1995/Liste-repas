@@ -19,7 +19,7 @@ describe("store", () => {
   });
 
   it("reads back what was written, leaving no temporary file", async () => {
-    const data = { weeks: { "2026-10-26": { mon: "pâtes" } }, library: ["pâtes"], shopping: [] };
+    const data = { weeks: { "2026-10-26": { mon: { lunch: "pâtes" } } }, library: ["pâtes"], shopping: [] };
     await writeData(file, data);
     expect(await readData(file)).toEqual(data);
     expect(await readdir(dir)).toEqual(["data.json"]);
