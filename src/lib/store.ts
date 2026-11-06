@@ -13,7 +13,7 @@ export const emptyData = (): Data => ({ weeks: {}, library: [], shopping: [] });
 
 export async function readData(path: string): Promise<Data> {
   try {
-    return JSON.parse(await readFile(path, "utf8"));
+    return { ...emptyData(), ...JSON.parse(await readFile(path, "utf8")) };
   } catch (e) {
     if ((e as NodeJS.ErrnoException).code === "ENOENT") return emptyData();
     throw e;

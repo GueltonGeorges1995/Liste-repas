@@ -6,8 +6,8 @@
 
 **Status:** ready-for-agent
 
-- [ ] Poser un nouveau Repas l'ajoute à la Bibliothèque
-- [ ] « Pâtes bolo » et « pâtes bolo  » ne donnent qu'une entrée
+- [x] Poser un nouveau Repas l'ajoute à la Bibliothèque
+- [x] « Pâtes bolo » et « pâtes bolo  » ne donnent qu'une entrée
 - [ ] Les suggestions se filtrent pendant la frappe et un choix remplit le Créneau
-- [ ] Supprimer un Repas de la Bibliothèque laisse intacts les Créneaux déjà planifiés (testé via l'API)
-- [ ] Tests de l'API passent
+- [x] Supprimer un Repas de la Bibliothèque laisse intacts les Créneaux déjà planifiés (testé via l'API)
+- [x] Tests de l'API passent

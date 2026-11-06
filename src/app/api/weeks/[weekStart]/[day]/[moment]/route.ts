@@ -1,3 +1,4 @@
+import { addToLibrary } from "@/lib/library";
 import { dataFilePath, updateData } from "@/lib/store";
 import { DAYS, isWeekStart, MOMENTS, type Day, type Moment } from "@/lib/week";
 
@@ -23,6 +24,7 @@ export async function PUT(req: Request, ctx: Ctx) {
   await updateData(dataFilePath(), (data) => {
     const week = (data.weeks[slot.weekStart] ??= {});
     (week[slot.day] ??= {})[slot.moment] = meal;
+    addToLibrary(data.library, meal);
   });
   return Response.json({ ...slot, meal });
 }

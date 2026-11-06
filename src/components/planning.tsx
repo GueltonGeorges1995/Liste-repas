@@ -10,6 +10,7 @@ import {
   type Moment,
   type Slot,
 } from "@/lib/week";
+import { mealKey } from "@/lib/library";
 
 const DAY_LABELS: Record<Day, string> = {
   mon: "Lundi",
@@ -35,6 +36,7 @@ export function Planning() {
   const [editing, setEditing] = useState<{ day: Day; moment: Moment } | null>(null);
   const [draft, setDraft] = useState("");
   const [reload, setReload] = useState(0);
+  const [library, setLibrary] = useState<string[]>([]);
 
   useEffect(() => {
     let cancelled = false;
@@ -52,6 +54,29 @@ export function Planning() {
       cancelled = true;
     };
   }, [weekStart, reload]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/library", { cache: "no-store" })
+      .then((res) => (res.ok ? res.json() : Promise.reject()))
+      .then((body) => {
+        if (!cancelled) setLibrary(body.meals);
+      })
+      .catch(() => {});
+    return () => {
+      cancelled = true;
+    };
+  }, [reload]);
+
+  const removeFromLibrary = async (meal: string) => {
+    const res = await fetch("/api/library", { method: "DELETE", body: JSON.stringify({ meal }) });
+    if (!res.ok) {
+      setError("La suppression a échoué.");
+      return;
+    }
+    setError(null);
+    setReload((n) => n + 1);
+  };
 
   const goTo = (week: string) => {
     setSlots(null);
@@ -76,6 +101,9 @@ export function Planning() {
     setEditing({ day: slot.day, moment: slot.moment });
     setDraft(slot.meal ?? "");
   };
+
+  const query = mealKey(draft);
+  const suggestions = library.filter((m) => mealKey(m).includes(query) && mealKey(m) !== query);
 
   const isCurrent = weekStart === currentWeekStart();
   const button = "rounded-lg border border-foreground/20 px-3 py-2 text-sm";
@@ -144,6 +172,29 @@ export function Planning() {
                           <button type="button" className={button} onClick={() => setEditing(null)}>
                             Annuler
                           </button>
+                          {suggestions.length > 0 && (
+                            <ul aria-label="Suggestions" className="w-full rounded-lg border border-foreground/15">
+                              {suggestions.map((meal) => (
+                                <li key={meal} className="flex items-center">
+                                  <button
+                                    type="button"
+                                    className="flex-1 px-3 py-2 text-left"
+                                    onClick={() => void send(slot.day, slot.moment, meal)}
+                                  >
+                                    {meal}
+                                  </button>
+                                  <button
+                                    type="button"
+                                    className="px-3 py-2 text-foreground/50"
+                                    aria-label={`Retirer ${meal} de la Bibliothèque`}
+                                    onClick={() => void removeFromLibrary(meal)}
+                                  >
+                                    ×
+                                  </button>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
                         </form>
                       ) : (
                         <button
