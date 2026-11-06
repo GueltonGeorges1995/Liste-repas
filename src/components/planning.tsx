@@ -11,6 +11,7 @@ import {
   type Slot,
 } from "@/lib/week";
 import { mealKey } from "@/lib/library";
+import { onReturn } from "@/lib/refresh";
 
 const DAY_LABELS: Record<Day, string> = {
   mon: "Lundi",
@@ -36,6 +37,8 @@ export function Planning() {
   const [editing, setEditing] = useState<{ day: Day; moment: Moment } | null>(null);
   const [draft, setDraft] = useState("");
   const [reload, setReload] = useState(0);
+
+  useEffect(() => onReturn(() => setReload((n) => n + 1)), []);
   const [library, setLibrary] = useState<string[]>([]);
   const [showLibrary, setShowLibrary] = useState(false);
 

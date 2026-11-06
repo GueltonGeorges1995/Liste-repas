@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { mealKey } from "@/lib/library";
 import type { Item } from "@/lib/store";
+import { onReturn } from "@/lib/refresh";
 
 export function Shopping() {
   const [items, setItems] = useState<Item[] | null>(null);
@@ -10,6 +11,8 @@ export function Shopping() {
   const [error, setError] = useState<string | null>(null);
   const [draft, setDraft] = useState("");
   const [reload, setReload] = useState(0);
+
+  useEffect(() => onReturn(() => setReload((n) => n + 1)), []);
 
   useEffect(() => {
     let cancelled = false;
