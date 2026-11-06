@@ -37,6 +37,7 @@ export function Planning() {
   const [draft, setDraft] = useState("");
   const [reload, setReload] = useState(0);
   const [library, setLibrary] = useState<string[]>([]);
+  const [showLibrary, setShowLibrary] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -100,10 +101,13 @@ export function Planning() {
   const startEdit = (slot: Slot) => {
     setEditing({ day: slot.day, moment: slot.moment });
     setDraft(slot.meal ?? "");
+    setShowLibrary(false);
   };
 
   const query = mealKey(draft);
-  const suggestions = library.filter((m) => mealKey(m).includes(query) && mealKey(m) !== query);
+  const suggestions = showLibrary
+    ? library.filter((m) => mealKey(m).includes(query) && mealKey(m) !== query)
+    : [];
 
   const isCurrent = weekStart === currentWeekStart();
   const button = "rounded-lg border border-foreground/20 px-3 py-2 text-sm";
@@ -171,6 +175,14 @@ export function Planning() {
                           )}
                           <button type="button" className={button} onClick={() => setEditing(null)}>
                             Annuler
+                          </button>
+                          <button
+                            type="button"
+                            className={button}
+                            aria-pressed={showLibrary}
+                            onClick={() => setShowLibrary((v) => !v)}
+                          >
+                            Anciens repas
                           </button>
                           {suggestions.length > 0 && (
                             <ul aria-label="Suggestions" className="w-full rounded-lg border border-foreground/15">

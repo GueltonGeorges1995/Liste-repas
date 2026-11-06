@@ -20,7 +20,7 @@ Une application web en français, pensée d'abord pour le mobile, servie depuis 
 4. En tant que membre du Foyer, je veux revenir en un geste à la Semaine courante, afin de ne pas me perdre en naviguant.
 5. En tant que membre du Foyer, je veux poser un Repas dans un Créneau en saisissant son libellé libre, afin de planifier sans recette ni ingrédients.
 6. En tant que membre du Foyer, je veux choisir un Repas dans la Bibliothèque pour remplir un Créneau, afin de planifier vite ce qu'on mange souvent.
-7. En tant que membre du Foyer, je veux que la Bibliothèque propose les Repas filtrés pendant que je tape, afin de retrouver un Repas rapidement.
+7. En tant que membre du Foyer, je veux afficher les Repas de la Bibliothèque sur demande (bouton « Anciens repas »), filtrés pendant que je tape, afin de retrouver un Repas rapidement sans que des anciens Repas me soient proposés d'eux-mêmes.
 8. En tant que membre du Foyer, je veux qu'un nouveau Repas entre automatiquement dans la Bibliothèque quand je le pose, afin de ne pas faire une saisie à part.
 9. En tant que membre du Foyer, je veux modifier le Repas d'un Créneau, afin de corriger une erreur ou de changer d'avis.
 10. En tant que membre du Foyer, je veux vider un Créneau, afin de refléter qu'on ne mange pas prévu ou pas à la maison.
