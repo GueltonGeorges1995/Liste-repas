@@ -6,10 +6,10 @@
 
 **Status:** ready-for-agent
 
-- [ ] Ajouter un Article libre apparaît dans la liste
-- [ ] Cocher et décocher un Article, et le conserver après rechargement
-- [ ] Supprimer un Article seul
-- [ ] « Retirer les cochés » supprime toutes les lignes cochées et seulement celles-là (testé via l'API)
-- [ ] La saisie propose les Articles déjà utilisés
-- [ ] La liste n'est liée ni au planning ni à une Semaine
-- [ ] Tests de l'API passent
+- [x] Ajouter un Article libre apparaît dans la liste
+- [x] Cocher et décocher un Article, et le conserver après rechargement
+- [x] Supprimer un Article seul
+- [x] « Retirer les cochés » supprime toutes les lignes cochées et seulement celles-là (testé via l'API)
+- [x] La saisie propose les Articles déjà utilisés
+- [x] La liste n'est liée ni au planning ni à une Semaine
+- [x] Tests de l'API passent

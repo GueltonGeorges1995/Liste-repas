@@ -3,13 +3,17 @@ import { randomUUID } from "node:crypto";
 import { dirname, join } from "node:path";
 import type { Week } from "./week";
 
+export type Item = { id: string; label: string; checked: boolean };
+
 export type Data = {
   weeks: Record<string, Week>;
   library: string[];
-  shopping: unknown[];
+  shopping: Item[];
+  // Libellés d'Articles déjà utilisés : source des suggestions, indépendante des lignes actuelles.
+  shoppingHistory: string[];
 };
 
-export const emptyData = (): Data => ({ weeks: {}, library: [], shopping: [] });
+export const emptyData = (): Data => ({ weeks: {}, library: [], shopping: [], shoppingHistory: [] });
 
 export async function readData(path: string): Promise<Data> {
   try {

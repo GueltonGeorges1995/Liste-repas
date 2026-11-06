@@ -15,18 +15,18 @@ afterEach(() => rm(dir, { recursive: true, force: true }));
 
 describe("store", () => {
   it("reads a missing file as empty data", async () => {
-    expect(await readData(file)).toEqual({ weeks: {}, library: [], shopping: [] });
+    expect(await readData(file)).toEqual({ weeks: {}, library: [], shopping: [], shoppingHistory: [] });
   });
 
   it("reads back what was written, leaving no temporary file", async () => {
-    const data = { weeks: { "2026-10-26": { mon: { lunch: "pâtes" } } }, library: ["pâtes"], shopping: [] };
+    const data = { weeks: { "2026-10-26": { mon: { lunch: "pâtes" } } }, library: ["pâtes"], shopping: [], shoppingHistory: [] };
     await writeData(file, data);
     expect(await readData(file)).toEqual(data);
     expect(await readdir(dir)).toEqual(["data.json"]);
   });
 
   it("keeps the previous file intact when a write fails", async () => {
-    const before = { weeks: {}, library: ["riz"], shopping: [] };
+    const before = { weeks: {}, library: ["riz"], shopping: [], shoppingHistory: [] };
     await writeData(file, before);
     const circular: Record<string, unknown> = {};
     circular.self = circular;
